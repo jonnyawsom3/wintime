@@ -64,10 +64,9 @@ namespace WinTime
   struct ClientProcessMemoryCounter
   {
     explicit ClientProcessMemoryCounter(HANDLE hProcess)
-      : data_{}
     {
-      bool res = GetProcessMemoryInfo(hProcess, &data_, sizeof(data_));
-      if (!res)
+      data_.cb = sizeof(data_);
+      if (!GetProcessMemoryInfo(hProcess, &data_, sizeof(data_)))
       {
         throw std::runtime_error("Could not get memory info!");
       }
