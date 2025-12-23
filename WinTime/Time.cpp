@@ -133,8 +133,8 @@ namespace WinTime
     FileTimeToSystemTime(&lpExitTimeLocal, &t_exit);
     return PTime{ toDateString(t_create),
       toDateString(t_exit),
-      toSeconds(lpUserTime),
       toSeconds(lpKernelTime),
+      toSeconds(lpUserTime),
       toSeconds(lpCreationTime, lpExitTime) };
   }
 
